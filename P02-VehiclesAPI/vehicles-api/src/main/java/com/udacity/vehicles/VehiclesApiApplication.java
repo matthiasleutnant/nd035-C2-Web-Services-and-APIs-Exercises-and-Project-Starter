@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
  * Launches a Spring Boot application for the Vehicles API,
@@ -17,6 +18,7 @@ import org.springframework.web.reactive.function.client.WebClient;
  * and launches web clients to communicate with maps and pricing.
  */
 @SpringBootApplication
+@EnableEurekaServer
 @EnableJpaAuditing
 public class VehiclesApiApplication {
 
@@ -64,5 +66,4 @@ public class VehiclesApiApplication {
     public WebClient webClientPricing(@Value("${pricing.endpoint}") String endpoint) {
         return WebClient.create(endpoint);
     }
-
 }
