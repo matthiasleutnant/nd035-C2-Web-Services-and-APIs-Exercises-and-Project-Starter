@@ -143,6 +143,17 @@ public class CarControllerTest {
                         .content(json.write(car).getJson())
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
                         .accept(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void updateCar() throws Exception {
+        Car car = getCar();
+        mvc.perform(
+                put(new URI("/cars/1"))
+                        .content(json.write(car).getJson())
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isNoContent());
     }
 
